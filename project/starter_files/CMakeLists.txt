@@ -12,6 +12,7 @@ set(CMAKE_CXX_FLAGS "${CXX_FLAGS} -Wl,-Bstatic -lcarla_client -lrpc -lboost_file
 set(sources main.cpp behavior_planner_FSM.cpp motion_planner.cpp cubic_spiral.cpp spiral_base.cpp integral.cpp spiral_equations.cpp cost_functions.cpp utils.cpp velocity_profile_generator.cpp )
 
 # Use includes and libs from CARLA_SOURCE_DIR.
+#reference https://github.com/udacity/nd013-c6-control-starter/blob/master/project/pid_controller/CMakeLists.txt
 set(CARLA_SOURCE_DIR /opt/carla-source)
 set(CARLA_BUILD_DIR ${CARLA_SOURCE_DIR}/Build)
 set(CARLA_BUILD_BOOST_DIR ${CARLA_BUILD_DIR}/boost-1.72.0-c8-install)
@@ -22,8 +23,6 @@ set(CARLA_BUILD_LIBCARLA_DIR ${CARLA_BUILD_DIR}/libcarla-client-build.release/Li
 set(CARLA_BUILD_BOOST_LIB_DIR ${CARLA_BUILD_BOOST_DIR}/lib)
 set(CARLA_BUILD_RECAST_LIB_DIR ${CARLA_BUILD_RECAST_DIR}/lib)
 set(CARLA_BUILD_RPCLIB_LIB_DIR ${CARLA_BUILD_RPCLIB_DIR}/lib)
-set(LIBUV_INCLUDE_DIR /usr/include/uv.h)   # Path to the uv.h directory
-set(LIBUV_LIBRARY /usr/lib/x86_64-linux-gnu/libuv.so)  # Path to the libuv library
 
 set(carla_libs ${CARLA_BUILD_BOOST_LIB_DIR}/libboost_filesystem.a ${CARLA_BUILD_BOOST_LIB_DIR}/libboost_program_options.a ${CARLA_BUILD_BOOST_LIB_DIR}/libboost_python38.a ${CARLA_BUILD_BOOST_LIB_DIR}/libboost_system.a ${CARLA_BUILD_LIBCARLA_DIR}/libcarla_client.a ${CARLA_BUILD_RPCLIB_LIB_DIR}/librpc.a ${CARLA_BUILD_RECAST_LIB_DIR}/libDebugUtils.a ${CARLA_BUILD_RECAST_LIB_DIR}/libDetour.a ${CARLA_BUILD_RECAST_LIB_DIR}/libDetourCrowd.a ${CARLA_BUILD_RECAST_LIB_DIR}/libDetourTileCache.a ${CARLA_BUILD_RECAST_LIB_DIR}/libRecast.a)
 
