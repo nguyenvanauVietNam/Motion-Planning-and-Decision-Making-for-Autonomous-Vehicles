@@ -207,6 +207,7 @@ Re-check the rubric in the classroom and ensure that your submission satisfies a
 
 **Reference github:**
 - https://github.com/udacity/nd013-c5-planning-starter.git
+- https://github.com/udacity/nd013-c6-control-starter/tree/master/project/pid_controller
 - https://github.com/Dharun235/Motion-planning-and-decision-making-for-autonomous-vehicles/blob/main/README.md
 - https://github.com/dilipkumar2k6/ml-udacity-project-nd013-c5-planning-starter
 
