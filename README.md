@@ -206,6 +206,8 @@ Step 8. Check the Rubric and Submit
 Re-check the rubric in the classroom and ensure that your submission satisfies all rubric criteria to pass the project. Once you are confident, submit the project.
 
 **Reference github:**
-
+- https://github.com/udacity/nd013-c5-planning-starter.git
 - https://github.com/Dharun235/Motion-planning-and-decision-making-for-autonomous-vehicles/blob/main/README.md
 - https://github.com/dilipkumar2k6/ml-udacity-project-nd013-c5-planning-starter
+
+**Using Chat GPT and Codeium AI support**
