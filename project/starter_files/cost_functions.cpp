@@ -55,6 +55,9 @@ double collision_circles_cost_spiral(const std::vector<PathPoint>& spiral,
       // calculate x and y: cur_y + CIRCLE_OFFSETS[c] * std::sin/cos(cur_yaw)
       auto circle_center_x = 0;  // <- Update 
       auto circle_center_y = 0;  // <- Update 
+      // Remove HINT: calculate circle_center_x and circle_center_y
+      auto circle_center_x = cur_x + CIRCLE_OFFSETS[c] * std::cos(cur_yaw); // <- Update
+      auto circle_center_y = cur_y + CIRCLE_OFFSETS[c] * std::sin(cur_yaw); // <- Update
 
       for (auto obst : obstacles) {
         if (collision) {
@@ -71,7 +74,14 @@ double collision_circles_cost_spiral(const std::vector<PathPoint>& spiral,
           // the distance between the center of each circle and the
           // obstacle/actor
           double dist = 0;  // <- Update
+          // Calculate the difference in x and y coordinates
+          double delta_x = circle_center_x - actor_center_x;
+          double delta_y = circle_center_y - actor_center_y;
 
+          // Calculate the distance using basic arithmetic (without pow())
+          dist = std::sqrt((delta_x * delta_x) + (delta_y * delta_y)); // <- Update
+
+          
           collision = (dist < (CIRCLE_RADII[c] + CIRCLE_RADII[c2]));
         }
       }
@@ -96,6 +106,22 @@ double close_to_main_goal_cost_spiral(const std::vector<PathPoint>& spiral,
   auto delta_x = 0;  // <- Update
   auto delta_y = 0;  // <- Update
   auto delta_z = 0;  // <- Update
+  
+  // Calculate the difference in x, y, and z coordinates between the last point on the spiral and the main goal
+  double last_spiral_x = spiral[n - 1].x;  // Get the x-coordinate of the last point on the spiral (spiral[n-1])
+  double last_spiral_y = spiral[n - 1].y;  // Get the y-coordinate of the last point on the spiral (spiral[n-1])
+  double last_spiral_z = spiral[n - 1].z;  // Get the z-coordinate of the last point on the spiral (spiral[n-1])
+
+  double goal_x = main_goal.location.x;    // Get the x-coordinate of the main goal's location
+  double goal_y = main_goal.location.y;    // Get the y-coordinate of the main goal's location
+  double goal_z = main_goal.location.z;    // Get the z-coordinate of the main goal's location
+
+  // Compute the differences in each dimension (x, y, z)
+  delta_x = goal_x - last_spiral_x;  // Calculate the difference in the x-coordinate between the main goal and the last point on the spiral
+  delta_y = goal_y - last_spiral_y;  // Calculate the difference in the y-coordinate between the main goal and the last point on the spiral
+  delta_z = goal_z - last_spiral_z;  // Calculate the difference in the z-coordinate between the main goal and the last point on the spiral
+
+
 
   auto dist = std::sqrt((delta_x * delta_x) + (delta_y * delta_y) +
                         (delta_z * delta_z));
